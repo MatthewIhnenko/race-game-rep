@@ -22,6 +22,8 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //addNotification()
+        
         
         // Лейбл названия игры настройки
         gameNameLabelSettings()
@@ -92,6 +94,8 @@ class StartViewController: UIViewController {
         //let storyboard = UIStoryboard(name: "GameViewController", bundle: nil)
         //let viewController = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         
+        
+        addNotification()
         let gameViewController = GameViewController.instantiate()
         
         present(gameViewController, animated: true)
@@ -118,6 +122,36 @@ class StartViewController: UIViewController {
 }
   
 
+    
+    func addNotification() {
+        
+        let playerName = UserDefaults.standard.string(forKey: "PlayerName")!
+        
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Hi, \(playerName)"
+        content.subtitle = "It's time to have a ride"
+        content.body = "Crazy chickens are waiting for you!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        let id = "last"
+        let notificationRequest = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.add(notificationRequest) { error in
+            print("Notification added=)")
+            guard let error = error else {
+                return
+            }
+            print(error.localizedDescription)
+            
+        }
+    }
+    
+    
+    
     
     
 }
