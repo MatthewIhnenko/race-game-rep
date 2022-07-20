@@ -1,0 +1,6 @@
+framework module Pods_RaceGame_1_0_RaceGame_1_0UITests {
+  umbrella header "Pods-RaceGame 1.0-RaceGame 1.0UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
