@@ -10,7 +10,7 @@ import UIKit
 
 
 extension UIButton {
-    func shadow(color: UIColor = .red,
+    func shadow(color: UIColor = UIColor(named: "CarRedColor") ?? .red,
                     offset: CGSize = CGSize(width: 5, height: 5),
                     opacity: Float = 0.7,
                     radius: CGFloat = 5) {

@@ -108,20 +108,29 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
+//    override func viewWillAppear(_ animated: Bool) {
+//        sliderImageView1.frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (sliderImageView1.frame.width / 2), y: swipeCarLabel.frame.height + 1)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         swipeCarLabel.font = UIFont.buttershine(with: 30)
+        carTypeLabel.font = UIFont.buttershine(with: 25)
         swipeDifficultyLabel.font = UIFont.buttershine(with: 30)
+        chickenTypeLabel.font = UIFont.buttershine(with: 30)
+        
+        print("CAR LABEL",swipeCarLabel.frame.height + 1)
+        sliderImageView1.frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (sliderImageView1.frame.width / 2), y: swipeCarLabel.frame.height + 21)
+        
+        
         
         
         enterYourNameTextField.delegate = self
         
         chickenTypeLabel.text = "Normal"
         
-        playerNameLabel.text = "Hi, \(UserDefaults.standard.string(forKey: "PlayerName") ?? "Unknown=)")!"
+        playerNameLabel.text = "Hi, \(UserDefaults.standard.string(forKey: "PlayerName") ?? "No name driver!")!"
         
         gestureCar()
         gestureCar2()
@@ -205,17 +214,18 @@ class SettingsViewController: UIViewController {
               } else {
                   self.sliderArrayChicken[self.nextIndexChicken].image = self.chickenImages[self.leftChicken]}
               
-              self.sliderArrayChicken[self.nextIndexChicken].frame.origin =  CGPoint(x: -480, y: 0)
+              self.sliderArrayChicken[self.nextIndexChicken].frame.origin =  CGPoint(x: -480, y: swipeDifficultyLabel.frame.height + 1)
               
               print("Swipe right")
+              
              
               
               UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) { [self] in
                   
                   //1я картинка
-                  self.sliderArrayChicken[currentIndexChicken].frame.origin = CGPoint(x: 480, y: 0)
+                  self.sliderArrayChicken[currentIndexChicken].frame.origin = CGPoint(x: 480, y: swipeDifficultyLabel.frame.height + 1)
                   //2я картинка
-                  self.sliderArrayChicken[nextIndexChicken].frame.origin = CGPoint(x: (difficultyChoserView.frame.width / 2) - (self.sliderArrayChicken[nextIndexChicken].frame.width / 2), y: 0)
+                  self.sliderArrayChicken[nextIndexChicken].frame.origin = CGPoint(x: (difficultyChoserView.frame.width / 2) - (self.sliderArrayChicken[nextIndexChicken].frame.width / 2), y: swipeDifficultyLabel.frame.height + 1)
                   
                   
               } completion: { [self] _ in
@@ -269,7 +279,7 @@ class SettingsViewController: UIViewController {
               } else {
                   self.sliderArrayChicken[self.nextIndexChicken].image = self.chickenImages[self.rightChicken]}
               
-              self.sliderArrayChicken[self.nextIndexChicken].frame.origin =  CGPoint(x: 480, y: 0)
+              self.sliderArrayChicken[self.nextIndexChicken].frame.origin =  CGPoint(x: 480, y: swipeDifficultyLabel.frame.height + 1)
               
               print("Swipe left")
               
@@ -277,7 +287,7 @@ class SettingsViewController: UIViewController {
               UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) { [self] in
                   self.sliderArrayChicken[currentIndexChicken].frame.origin = CGPoint(x: -480, y: 0)
 
-                  self.sliderArrayChicken[nextIndexChicken].frame.origin = CGPoint(x: (difficultyChoserView.frame.width / 2) - (self.sliderArrayChicken[nextIndexChicken].frame.width / 2), y: 0)
+                  self.sliderArrayChicken[nextIndexChicken].frame.origin = CGPoint(x: (difficultyChoserView.frame.width / 2) - (self.sliderArrayChicken[nextIndexChicken].frame.width / 2), y: swipeDifficultyLabel.frame.height + 1)
                   
                    
                   
@@ -335,7 +345,7 @@ class SettingsViewController: UIViewController {
   }
     
     
-   
+   //CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!CAR!!!!!
     
   private func setupSwipeGestureRecognizer() {
         let rightSwipe = UISwipeGestureRecognizer()
@@ -367,15 +377,16 @@ class SettingsViewController: UIViewController {
             } else {
                 self.sliderArray[self.nextIndex].image = self.carsImages[self.leftCar]}
             
-            self.sliderArray[self.nextIndex].frame.origin =  CGPoint(x: -480, y: 0)
+            self.sliderArray[self.nextIndex].frame.origin =  CGPoint(x: -480, y: swipeCarLabel.frame.height + 1)
             
             print("Swipe right")
+            print("CAR LABEL",swipeCarLabel.frame.height + 1)
              
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) { [self] in
                 
                 //1я картинка
-                self.sliderArray[currentIndex].frame.origin = CGPoint(x: 480, y: 0)
+                self.sliderArray[currentIndex].frame.origin = CGPoint(x: 480, y: swipeCarLabel.frame.height + 1)
                 
                 
                 rightSwapCarRecognition()
@@ -386,7 +397,7 @@ class SettingsViewController: UIViewController {
                 
                 
                 //2я картинка
-                self.sliderArray[nextIndex].frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (self.sliderArray[nextIndex].frame.width / 2), y: 0)
+                self.sliderArray[nextIndex].frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (self.sliderArray[nextIndex].frame.width / 2), y: swipeCarLabel.frame.height + 1)
                 
                 
             } completion: { [self] _ in
@@ -441,13 +452,14 @@ class SettingsViewController: UIViewController {
             } else {
                 self.sliderArray[self.nextIndex].image = self.carsImages[self.rightCar]}
             
-            self.sliderArray[self.nextIndex].center =  CGPoint(x: 480, y: carChoserView.frame.minY)
+            self.sliderArray[self.nextIndex].frame.origin =  CGPoint(x: 480, y: swipeCarLabel.frame.height + 1)
+            //self.sliderArray[self.nextIndex].center =  CGPoint(x: 480, y: swipeCarLabel.frame.height + 1)
             
             print("Swipe left")
             
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) { [self] in
-                self.sliderArray[currentIndex].frame.origin = CGPoint(x: -480, y: 0)
+                self.sliderArray[currentIndex].frame.origin = CGPoint(x: -480, y: swipeCarLabel.frame.height + 1)
                 
                 //Отображение лейбла с названием
                 leftSwapCarRecognition()
@@ -458,7 +470,7 @@ class SettingsViewController: UIViewController {
                 //Настройка через БУЛ
                 leftSwapCarSaving2()
 
-                self.sliderArray[nextIndex].frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (self.sliderArray[nextIndex].frame.width / 2), y: 0)
+                self.sliderArray[nextIndex].frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (self.sliderArray[nextIndex].frame.width / 2), y: swipeCarLabel.frame.height + 1)
                 
                  
                 
@@ -836,7 +848,8 @@ extension SettingsViewController: UITextFieldDelegate {
         
         playerName = UserDefaults.standard.string(forKey: "PlayerName")
         
-        playerNameLabel.text = playerName
+         
+        playerNameLabel.text = playerName ?? "UnknownPlayer"
         print (playerName)
         
         enterYourNameTextFieldDown()

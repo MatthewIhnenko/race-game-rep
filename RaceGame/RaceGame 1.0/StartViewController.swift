@@ -27,7 +27,7 @@ class StartViewController: UIViewController {
         
         // Лейбл названия игры настройки
         gameNameLabelSettings()
-        gameNameLabel.font = UIFont.buttershine(with: 60)
+        gameNameLabel.font = UIFont.buttershine(with: 55)
         
         gameOverLabel.font = UIFont.buttershine(with: 40)
         
@@ -41,7 +41,7 @@ class StartViewController: UIViewController {
         gameButton.setTitle("Game", for: .normal)
         gameButton.cornerRadius = 15
         gameButton.shadow()
-        gameButton.backgroundColor = .systemTeal
+        gameButton.backgroundColor = UIColor(named: "MilkColor")
         
 //        gameButton.layer.shadowColor = UIColor.red.cgColor
 //        gameButton.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -52,11 +52,11 @@ class StartViewController: UIViewController {
         //resultsButton.titleLabel?.font = .buttershine(with: 25)
         resultsButton.cornerRadius = 15
         resultsButton.shadow()
-        resultsButton.backgroundColor = .systemTeal
+        resultsButton.backgroundColor = UIColor(named: "MilkColor")
         
         settingsButton.setTitle("Settings", for: .normal)
         settingsButton.cornerRadius = 15
-        settingsButton.backgroundColor = .systemTeal
+        settingsButton.backgroundColor = UIColor(named: "MilkColor")
         settingsButton.shadow()
         
         gameOverLabel.text = ""
@@ -79,9 +79,12 @@ class StartViewController: UIViewController {
     func gameNameLabelSettings() {
        let text = "CHICKENGEDDON"
         let attrText = NSMutableAttributedString(string: text)
-        attrText.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 7))
-        attrText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 7, length: 6))
+        attrText.addAttribute(.foregroundColor, value: UIColor(named: "CarRedColor"), range: NSRange(location: 0, length: 7))
+        
+        attrText.addAttribute(.foregroundColor, value: UIColor(named: "LightBlack"), range: NSRange(location: 7, length: 6))
         gameNameLabel.attributedText = attrText
+        
+        
         
         
     }
@@ -125,7 +128,7 @@ class StartViewController: UIViewController {
     
     func addNotification() {
         
-        let playerName = UserDefaults.standard.string(forKey: "PlayerName")!
+        let playerName = UserDefaults.standard.string(forKey: "PlayerName") ?? "NoNamePlayer"
         
         
         let content = UNMutableNotificationContent()

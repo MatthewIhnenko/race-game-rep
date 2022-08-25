@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,25 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChickenRace" translatesAutoresizingMaskIntoConstraints="NO" id="POi-oU-g7a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best scores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c60-dw-rR7">
-                                <rect key="frame" x="70" y="44" width="274" height="70"/>
+                                <rect key="frame" x="20" y="44" width="374" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="5VA-Jc-j4O"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" name="CarRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tan-af-qMO">
-                                <rect key="frame" x="177" y="119" width="61" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Reset">
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="testButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FiX-eA-YIZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9a-ph-d0e">
                                 <rect key="frame" x="20" y="134" width="100" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,7 +103,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-MU-ztH">
                                 <rect key="frame" x="5" y="140" width="404" height="717"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultsTableViewCell" rowHeight="117" id="X7g-HP-Bdq" customClass="ResultsTableViewCell" customModule="RaceGame_1_0" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="404" height="117"/>
@@ -152,7 +146,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="vdB-6I-wfS" secondAttribute="trailing" constant="5" id="uBO-O0-jnW"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="vdB-6I-wfS" id="3Lb-bC-wZz"/>
                                             <outlet property="nameLabel" destination="vqK-Bx-qVW" id="TG9-Gq-QXj"/>
@@ -161,20 +155,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tan-af-qMO">
+                                <rect key="frame" x="160" y="93" width="95" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Reset">
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="testButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FiX-eA-YIZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tan-af-qMO" firstAttribute="top" secondItem="c60-dw-rR7" secondAttribute="bottom" constant="5" id="Ivf-2r-PfD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="POi-oU-g7a" secondAttribute="bottom" id="HhN-bG-AdE"/>
                             <constraint firstItem="c60-dw-rR7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Mm0-UQ-2u3"/>
-                            <constraint firstItem="c60-dw-rR7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="70" id="UMf-VZ-get"/>
-                            <constraint firstItem="tan-af-qMO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="177" id="Vyw-Oi-Uow"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="POi-oU-g7a" secondAttribute="trailing" id="SyT-5H-khU"/>
+                            <constraint firstItem="c60-dw-rR7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="UMf-VZ-get"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ldk-MU-ztH" secondAttribute="bottom" constant="5" id="Zqc-X8-6UZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ldk-MU-ztH" secondAttribute="trailing" constant="5" id="dv5-a2-Aeu"/>
+                            <constraint firstItem="POi-oU-g7a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fHJ-vH-sJ2"/>
                             <constraint firstItem="Ldk-MU-ztH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="fq4-jO-fBn"/>
                             <constraint firstItem="Ldk-MU-ztH" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.8" id="ihL-62-dph"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tan-af-qMO" secondAttribute="trailing" constant="176" id="m9M-be-T3I"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="c60-dw-rR7" secondAttribute="trailing" constant="70" id="ugA-g6-RNG"/>
+                            <constraint firstItem="POi-oU-g7a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oqS-LS-qu9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="c60-dw-rR7" secondAttribute="trailing" constant="20" id="ugA-g6-RNG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -197,14 +203,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ChickenRace" width="1024" height="1024"/>
+        <namedColor name="CarRedColor">
+            <color red="0.95599997043609619" green="0.28499999642372131" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
