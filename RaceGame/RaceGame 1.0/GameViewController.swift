@@ -59,7 +59,7 @@ class GameViewController: UIViewController {
         
     // Вьюшка машинки
         carImageGameView.center.x = grayView.center.x
-        carImageGameView.center.y = grayView.frame.maxY - carImageGameView.frame.height
+        carImageGameView.center.y = grayView.frame.maxY - (carImageGameView.frame.height * 1.3)
         
     // Цвет машинки
         setupCarColor()
@@ -158,18 +158,12 @@ class GameViewController: UIViewController {
            UserDefaults.standard.set(d, forKey: "TimePlay")
            print("Время рекорда - \(UserDefaults.standard.string(forKey: "TimePlay"))")
 
-           
-           
-           
                self.timer.invalidate()
                
                UserDefaults.standard.set(self.score, forKey: "scores")
            print("Набранные очки - \(UserDefaults.standard.integer(forKey: "scores"))")
            
            //self.timerDate.invalidate()
-           
-           
-               
            
           // print("TIMER STOPGAME",self.gameStop)
            saveScore()

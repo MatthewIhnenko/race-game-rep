@@ -21,7 +21,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        soundtrack()
         //addNotification()
         
         
@@ -89,10 +89,23 @@ class StartViewController: UIViewController {
         
     }
     
+    @IBAction func musicButtonPressed(_ sender: UIButton) {
+        guard let player = player else {
+            return
+        }
+        
+        if player.isPlaying {
+            player.stop()
+        } else {
+            player.play()
+        }
+        
+        //music.note music.note.list
+        sender.setImage(player.isPlaying ? UIImage(systemName: "music.note") : UIImage(systemName: "music.note.list"), for: .normal)
+    }
     
     
     
-
     @IBAction func gameButtonPressed(_ sender: UIButton) {
         //let storyboard = UIStoryboard(name: "GameViewController", bundle: nil)
         //let viewController = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
@@ -111,6 +124,7 @@ class StartViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ResultsViewController", bundle: nil)
         
         let viewController = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+        viewController.modalPresentationStyle = .overCurrentContext
         
         present(viewController, animated: true)
 }
@@ -120,6 +134,7 @@ class StartViewController: UIViewController {
         let storyboard = UIStoryboard(name: "SettingsViewController", bundle: nil)
         
         let viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        viewController.modalPresentationStyle = .overCurrentContext
         
         present(viewController, animated: true)
 }

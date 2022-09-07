@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             print("Notifications are allowed")
+            
+            
+            
+            
+            
+            
+            
+            
         }
         
         

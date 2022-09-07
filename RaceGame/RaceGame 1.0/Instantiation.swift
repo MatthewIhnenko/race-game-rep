@@ -16,6 +16,7 @@ extension UIViewController {
     static func instantiate() -> Self {
         let storyboard = UIStoryboard(name: identifier, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier) as! Self
+        //viewController.modalPresentationStyle = .overCurrentContext
         return viewController
     }
 }

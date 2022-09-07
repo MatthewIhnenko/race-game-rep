@@ -131,6 +131,15 @@ class ResultsViewController: UIViewController {
         }
     
     
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+        let startViewController = StartViewController.instantiate()
+        dismiss(animated: true)
+        
+        
+    }
+    
     func resetDefaults() {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
@@ -162,5 +171,8 @@ extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
         
     }
+    
+    
+    
     
 }

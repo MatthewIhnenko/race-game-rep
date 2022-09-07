@@ -809,6 +809,24 @@ class SettingsViewController: UIViewController {
 //
 //    }
     
+    @IBAction func sliderAction(_ sender: UISlider) {
+        player?.setVolume(sender.value, fadeDuration: 0.1)
+        
+    }
+    
+    
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        
+        //let startViewController = StartViewController.instantiate()
+        
+        
+        dismiss(animated: true)
+        
+        
+    }
+    
+    
+    
     @IBAction func sumbitNameButtonPressed(_ sender: UIButton) {
         
         //playerName = "\(UserDefaults.standard.string(forKey: "PlayerName") ?? "Player_1")"
