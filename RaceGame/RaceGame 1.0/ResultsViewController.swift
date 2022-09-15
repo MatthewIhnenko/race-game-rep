@@ -6,100 +6,127 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookShare
+import MessageUI
 
 class ResultsViewController: UIViewController {
     
-    
     //@IBOutlet weak var nameLabel: UILabel!
-    
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    
-    @IBOutlet weak var name1Label: UILabel!
-    @IBOutlet weak var name2Label: UILabel!
-    @IBOutlet weak var name3Label: UILabel!
-    @IBOutlet weak var result1Label: UILabel!
-    @IBOutlet weak var result2Label: UILabel!
-    @IBOutlet weak var result3Label: UILabel!
-    @IBOutlet weak var date1Label: UILabel!
-    @IBOutlet weak var date2Label: UILabel!
-    @IBOutlet weak var date3Label: UILabel!
+//    @IBOutlet weak var name1Label: UILabel!
+//    @IBOutlet weak var name2Label: UILabel!
+//    @IBOutlet weak var name3Label: UILabel!
+//    @IBOutlet weak var result1Label: UILabel!
+//    @IBOutlet weak var result2Label: UILabel!
+//    @IBOutlet weak var result3Label: UILabel!
+//    @IBOutlet weak var date1Label: UILabel!
+//    @IBOutlet weak var date2Label: UILabel!
+//    @IBOutlet weak var date3Label: UILabel!
     
     private var nameLabels = [UILabel]()
     private var resultLabels = [UILabel]()
     private var dateLabels = [UILabel]()
-    
     
     var player: [Player] = []
     
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
     
-   
     
-
+    
+    @IBOutlet weak var shareButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         titleLabel.font = UIFont.buttershine(with: 30)
+        
 
         tableView.delegate = self
         tableView.dataSource = self
         
-        addNameLabelArray()
-        addResultLabelArray()
-        addDateLabelArray()
+//        addNameLabelArray()
+//        addResultLabelArray()
+//        addDateLabelArray()
         
         addToScores()
        
-    hide()
+  //  hide()
+         
        
     }
     
-    func hide() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        name1Label.isHidden = true
-        date1Label.isHidden = true
-        result1Label.isHidden = true
-        
-        name2Label.isHidden = true
-        date2Label.isHidden = true
-        result2Label.isHidden = true
-        
-        name3Label.isHidden = true
-        date3Label.isHidden = true
-        result3Label.isHidden = true
+        shareButton.titleLabel?.font = UIFont.buttershine(with: 18)
         
         
     }
     
     
-    private func addDateLabelArray() {
     
-        dateLabels.append(date1Label)
-        dateLabels.append(date2Label)
-        dateLabels.append(date3Label)
+    
+    
+    func shareBest (with result: Player, row: Int) {
         
+        let share = result.result
+        
+        let activityVC = UIActivityViewController(activityItems: ["Hi,i got \(share)  points at CHICKENGEDDON!"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityVC, animated: true, completion: nil)
         
     }
     
-    private func addNameLabelArray() {
     
-        nameLabels.append(name1Label)
-        nameLabels.append(name2Label)
-        nameLabels.append(name3Label)
-        
-        
-    }
     
-    private func addResultLabelArray() {
-        
-        resultLabels.append(result1Label)
-        resultLabels.append(result2Label)
-        resultLabels.append(result3Label)
-    }
+
+    
+    
+//    func hide() {
+//
+//        name1Label.isHidden = true
+//        date1Label.isHidden = true
+//        result1Label.isHidden = true
+//
+//        name2Label.isHidden = true
+//        date2Label.isHidden = true
+//        result2Label.isHidden = true
+//
+//        name3Label.isHidden = true
+//        date3Label.isHidden = true
+//        result3Label.isHidden = true
+//
+//    }
+    
+    
+//    private func addDateLabelArray() {
+//
+//        dateLabels.append(date1Label)
+//        dateLabels.append(date2Label)
+//        dateLabels.append(date3Label)
+//
+//    }
+    
+//    private func addNameLabelArray() {
+//
+//        //nameLabels.append(name1Label)
+//       // nameLabels.append(name2Label)
+//        //nameLabels.append(name3Label)
+//
+//    }
+    
+//    private func addResultLabelArray() {
+//
+//        //resultLabels.append(result1Label)
+//       // resultLabels.append(result2Label)
+//        //resultLabels.append(result3Label)
+//    }
     
     private func addToScores() {
         if let data = UserDefaults.standard.value(forKey: "info") as? Data {
@@ -107,6 +134,7 @@ class ResultsViewController: UIViewController {
                // let playersResult  = try decoder.decode([Player].self, from: data)
                  player  = try decoder.decode([Player].self, from: data)
                  print(player.count)
+                
 
                 
 //                var a = 0
@@ -132,12 +160,19 @@ class ResultsViewController: UIViewController {
     
     
     
+    @IBAction func facebookShareButtonPressed(_ sender: Any) {
+        
+        shareBest(with: player[0], row: 0)
+        
+    }
+    
+    
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         
         let startViewController = StartViewController.instantiate()
         dismiss(animated: true)
-        
-        
+
     }
     
     func resetDefaults() {
@@ -154,6 +189,10 @@ class ResultsViewController: UIViewController {
     
     }
 
+
+
+
+// EXTESION
 extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,10 +208,5 @@ extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(with: player[indexPath.row], row: indexPath.row)
         
         return cell
-        
     }
-    
-    
-    
-    
 }

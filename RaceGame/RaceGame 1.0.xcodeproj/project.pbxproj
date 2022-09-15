@@ -10,6 +10,9 @@
 		00DA531E7DD5F548998DB1D7 /* Pods_RaceGame_1_0_RaceGame_1_0UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667C9931D60EBCF66D8C4570 /* Pods_RaceGame_1_0_RaceGame_1_0UITests.framework */; };
 		6B0379CE93AE654D34C75322 /* Pods_RaceGame_1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02395084A9D4DD2BC3B3C6C9 /* Pods_RaceGame_1_0.framework */; };
 		843BF1D828C898B000748407 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BF1D728C898B000748407 /* AudioPlayer.swift */; };
+		843BF1DE28C8BCEB00748407 /* OnBoardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843BF1DD28C8BCEB00748407 /* OnBoardViewController.storyboard */; };
+		843BF1E028C8BCFD00748407 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BF1DF28C8BCFD00748407 /* OnBoardViewController.swift */; };
+		843BF1E228C8BFF600748407 /* CoreClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BF1E128C8BFF600748407 /* CoreClass.swift */; };
 		844CC2632809B4D1002161FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CC2622809B4D1002161FF /* AppDelegate.swift */; };
 		844CC2652809B4D1002161FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CC2642809B4D1002161FF /* SceneDelegate.swift */; };
 		844CC2672809B4D1002161FF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CC2662809B4D1002161FF /* StartViewController.swift */; };
@@ -27,6 +30,8 @@
 		844CC29D2809B7C4002161FF /* ResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CC29C2809B7C4002161FF /* ResultsViewController.storyboard */; };
 		844CC29F2809BA77002161FF /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CC29E2809BA77002161FF /* Instantiation.swift */; };
 		84546C4B285E1EBA00608B22 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84546C4A285E1EBA00608B22 /* ResultsTableViewCell.swift */; };
+		8472E0CC28CE6CA200916EBB /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8472E0CB28CE6CA200916EBB /* FacebookShare */; };
+		8472E0CF28CE71E900916EBB /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8472E0CE28CE71E900916EBB /* FacebookCore */; };
 		84944D4A283697CF00710EBE /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84944D49283697CF00710EBE /* Alerts.swift */; };
 		849A8EA528C7B99600116335 /* LP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849A8EA328C7B99600116335 /* LP.mp3 */; };
 		849A8EA628C7B99600116335 /* Nirvana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849A8EA428C7B99600116335 /* Nirvana.mp3 */; };
@@ -64,6 +69,9 @@
 		667C9931D60EBCF66D8C4570 /* Pods_RaceGame_1_0_RaceGame_1_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaceGame_1_0_RaceGame_1_0UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8301E01670537B4FD56F28FE /* Pods-RaceGame 1.0Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaceGame 1.0Tests.debug.xcconfig"; path = "Target Support Files/Pods-RaceGame 1.0Tests/Pods-RaceGame 1.0Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		843BF1D728C898B000748407 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = "/Users/admin/race-game-rep/RaceGame/RaceGame 1.0/AudioPlayer.swift"; sourceTree = "<absolute>"; };
+		843BF1DD28C8BCEB00748407 /* OnBoardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoardViewController.storyboard; sourceTree = "<group>"; };
+		843BF1DF28C8BCFD00748407 /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
+		843BF1E128C8BFF600748407 /* CoreClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreClass.swift; path = "/Users/admin/race-game-rep/RaceGame/RaceGame 1.0/CoreClass.swift"; sourceTree = "<absolute>"; };
 		844CC25F2809B4D1002161FF /* RaceGame 1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RaceGame 1.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		844CC2622809B4D1002161FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844CC2642809B4D1002161FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8472E0CC28CE6CA200916EBB /* FacebookShare in Frameworks */,
+				8472E0CF28CE71E900916EBB /* FacebookCore in Frameworks */,
 				6B0379CE93AE654D34C75322 /* Pods_RaceGame_1_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,7 +189,10 @@
 				849A8EA228C7B93000116335 /* Fonts */,
 				844CC2642809B4D1002161FF /* SceneDelegate.swift */,
 				84A95AA4284D534D00295EFE /* UI */,
+				843BF1E128C8BFF600748407 /* CoreClass.swift */,
 				844CC29E2809BA77002161FF /* Instantiation.swift */,
+				843BF1DD28C8BCEB00748407 /* OnBoardViewController.storyboard */,
+				843BF1DF28C8BCFD00748407 /* OnBoardViewController.swift */,
 				84A95AA2284D216300295EFE /* PlayerClass.swift */,
 				844CC2662809B4D1002161FF /* StartViewController.swift */,
 				844CC2682809B4D1002161FF /* StartViewController.storyboard */,
@@ -260,6 +273,10 @@
 			dependencies = (
 			);
 			name = "RaceGame 1.0";
+			packageProductDependencies = (
+				8472E0CB28CE6CA200916EBB /* FacebookShare */,
+				8472E0CE28CE71E900916EBB /* FacebookCore */,
+			);
 			productName = "RaceGame 1.0";
 			productReference = 844CC25F2809B4D1002161FF /* RaceGame 1.0.app */;
 			productType = "com.apple.product-type.application";
@@ -334,6 +351,10 @@
 				Base,
 			);
 			mainGroup = 844CC2562809B4D1002161FF;
+			packageReferences = (
+				8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				8472E0CD28CE71E900916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 844CC2602809B4D1002161FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -354,6 +375,7 @@
 				844CC29D2809B7C4002161FF /* ResultsViewController.storyboard in Resources */,
 				844CC26F2809B4D2002161FF /* LaunchScreen.storyboard in Resources */,
 				849A8EA628C7B99600116335 /* Nirvana.mp3 in Resources */,
+				843BF1DE28C8BCEB00748407 /* OnBoardViewController.storyboard in Resources */,
 				844CC2952809B78E002161FF /* GameViewController.storyboard in Resources */,
 				844CC2992809B7A2002161FF /* SettingsViewController.storyboard in Resources */,
 				844CC26C2809B4D2002161FF /* Assets.xcassets in Resources */,
@@ -474,10 +496,12 @@
 				844CC2672809B4D1002161FF /* StartViewController.swift in Sources */,
 				84546C4B285E1EBA00608B22 /* ResultsTableViewCell.swift in Sources */,
 				84E5627928329C90002B8B7A /* UIfonts.swift in Sources */,
+				843BF1E028C8BCFD00748407 /* OnBoardViewController.swift in Sources */,
 				84A95AA3284D216300295EFE /* PlayerClass.swift in Sources */,
 				844CC29F2809BA77002161FF /* Instantiation.swift in Sources */,
 				84C1AAA6282BDDCD0045BE2B /* UIbutton + cornerRadius.swift in Sources */,
 				844CC2632809B4D1002161FF /* AppDelegate.swift in Sources */,
+				843BF1E228C8BFF600748407 /* CoreClass.swift in Sources */,
 				843BF1D828C898B000748407 /* AudioPlayer.swift in Sources */,
 				844CC2972809B79C002161FF /* SettingsViewController.swift in Sources */,
 				844CC2652809B4D1002161FF /* SceneDelegate.swift in Sources */,
@@ -831,6 +855,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		8472E0CD28CE71E900916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8472E0CB28CE6CA200916EBB /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		8472E0CE28CE71E900916EBB /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 844CC2572809B4D1002161FF /* Project object */;
 }

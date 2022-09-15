@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/admin/race-game-rep/RaceGame/RaceGame 1.0/CoreClass.swift">
+   </FileRef>
+   <FileRef
       location = "group:RaceGame 1.0.xcodeproj">
    </FileRef>
    <FileRef

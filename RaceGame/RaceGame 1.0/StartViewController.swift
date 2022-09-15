@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class StartViewController: UIViewController {
     
     // Лейбл названия игры
@@ -21,6 +22,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         soundtrack()
         //addNotification()
         
@@ -75,6 +77,7 @@ class StartViewController: UIViewController {
         
         
     }
+    
     
     func gameNameLabelSettings() {
        let text = "CHICKENGEDDON"

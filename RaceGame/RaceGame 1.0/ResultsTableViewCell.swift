@@ -10,11 +10,9 @@ import UIKit
 class ResultsTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
-    
     @IBOutlet private weak var resultLabel: UILabel!
-    
     @IBOutlet private weak var dateLabel: UILabel!
-    
+
 
     override func awakeFromNib() {
         super.awakeFromNib()

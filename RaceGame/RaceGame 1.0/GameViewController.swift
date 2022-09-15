@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class GameViewController: UIViewController {
 
@@ -49,8 +50,17 @@ class GameViewController: UIViewController {
     
     //var playerNameGame = String
     
+    // акселерометр
+    let motionManager = CMMotionManager()
+    var timerForAccelerometer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        motionManager.startAccelerometerUpdates()
+        timerForAccelerometer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        
         
         
         
@@ -72,6 +82,38 @@ class GameViewController: UIViewController {
 //    func cancelTimer() {
 //      timer.invalidate()
 //    }
+    
+    // АКСЛЕРОМЕТР АКСЛЕРОМЕТР АКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТР
+    @objc func update() {
+            if let accelerometerData = motionManager.accelerometerData {
+                 
+                var accX = accelerometerData.acceleration.x
+                print(accX)
+                
+                UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear) {
+                    
+                    
+                    
+                    if accX < 0 {
+                        self.carImageGameView.center.x -= 15
+                    
+                    } else {
+                        self.carImageGameView.center.x += 15
+                    }
+                    self.carImageGameView.transform = CGAffineTransform(rotationAngle: 25)
+                    self.crashGrass()
+                } completion: { _ in
+                   self.carImageGameView.transform = CGAffineTransform(rotationAngle: 0)
+                    print("Рулим налево ")
+                }
+                
+                
+            }
+            
+        }
+    
+    
+    
     
     func setupCarColor() {
         if UserDefaults.standard.bool(forKey: "red") == true {
@@ -159,6 +201,7 @@ class GameViewController: UIViewController {
            print("Время рекорда - \(UserDefaults.standard.string(forKey: "TimePlay"))")
 
                self.timer.invalidate()
+               self.timerForAccelerometer.invalidate()
                
                UserDefaults.standard.set(self.score, forKey: "scores")
            print("Набранные очки - \(UserDefaults.standard.integer(forKey: "scores"))")
@@ -218,6 +261,10 @@ class GameViewController: UIViewController {
 
     @IBAction func leftButtonPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear) {
+            
+            
+            
+            
             self.carImageGameView.center.x -= 20
             self.carImageGameView.transform = CGAffineTransform(rotationAngle: 25)
             self.crashGrass()
@@ -292,9 +339,6 @@ class GameViewController: UIViewController {
             
         }
     }
-    
-    
-    
     
     
     
@@ -410,10 +454,6 @@ class GameViewController: UIViewController {
     func dateTimer() {
             timerDate = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                 
-                 
-                    
-                    
-
                     //self.saveScore()
 
                    // print("Зафиксированное время", UserDefaults.standard.string(forKey: "TimePlay")!)
@@ -482,7 +522,7 @@ class GameViewController: UIViewController {
             playersResult.append(player)
             playersResult.sort(by: {$0.result > $1.result})
             
-            if playersResult.count == 12 {
+            if playersResult.count == 10 {
                 playersResult.removeLast()
             }
         }
