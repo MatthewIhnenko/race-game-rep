@@ -15,7 +15,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var leftGrassView: UIView!
     @IBOutlet weak var rightGrassView: UIView!
     @IBOutlet weak var carImageGameView: UIImageView!
-        
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    
     @IBOutlet weak var scoreLabel: UILabel!
     
     private var score: Int = 0
@@ -29,11 +31,12 @@ class GameViewController: UIViewController {
     
     var gameModeNormal: Bool = true
     
+    var godeMode: Bool = false
+    
     var gameStop: Bool = false
     
     var timerDate = Timer()
     
-    //let date: String = "\(Date())"
     let date = Date()
     var formattedDate: DateFormatter = {
         let formatter = DateFormatter()
@@ -42,27 +45,22 @@ class GameViewController: UIViewController {
         return formatter
     }()
     
-
-    
+    // Таймеры
     var timer = Timer()
-    var timerChickien = Timer()
-    var timerChickien2 = Timer()
+    var timerNormalMode = Timer()
+    var timerInsaneMode = Timer()
+    var timerForGodeMode = Timer()
     
-    //var playerNameGame = String
-    
-    // акселерометр
+    // Акселерометр
     let motionManager = CMMotionManager()
     var timerForAccelerometer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         motionManager.startAccelerometerUpdates()
-        timerForAccelerometer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
-        
-        
-        
+    
+        controls()
         
      // Режим сложности игры
         gameModeNormal = UserDefaults.standard.bool(forKey: "GameMode")
@@ -70,11 +68,9 @@ class GameViewController: UIViewController {
     // Вьюшка машинки
         carImageGameView.center.x = grayView.center.x
         carImageGameView.center.y = grayView.frame.maxY - (carImageGameView.frame.height * 1.3)
-        
     // Цвет машинки
         setupCarColor()
         
- 
    //    crashChicken()
         
     }
@@ -84,6 +80,37 @@ class GameViewController: UIViewController {
 //    }
     
     // АКСЛЕРОМЕТР АКСЛЕРОМЕТР АКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТРАКСЛЕРОМЕТР АКСЛЕРОМЕТР
+//    UserDefaults.standard.set(true, forKey: "ControlsAccelerometer")
+//    UserDefaults.standard.set(false, forKey: "ControlsKeybord")
+    func controls() {
+        
+        if UserDefaults.standard.bool(forKey: "ControlsAccelerometer") == true {
+            
+            timerForAccelerometer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+            leftButton.isHidden = true
+            rightButton.isHidden = true
+        } else {
+            leftButton.isHidden = false
+            rightButton.isHidden = false
+        }
+        
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if event?.subtype == UIEvent.EventSubtype.motionShake {
+            print("SHAKE")
+            
+            godeMode = true
+            print("godemodeON")
+            timerForGodeMode = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                self.godeMode = false
+print("godemodeOFF")
+            })
+        }
+    }
+    
+    
+    
     @objc func update() {
             if let accelerometerData = motionManager.accelerometerData {
                  
@@ -150,7 +177,6 @@ class GameViewController: UIViewController {
     //Делаем кнопку старта невидимой
         sender.isHidden = true
         
-         
     //Таймер очков (секунды)
         scoreTimer()
     //Таймер деревьев на обочине
@@ -177,8 +203,8 @@ class GameViewController: UIViewController {
     
     func chickenMode() {
         if gameModeNormal == true {
-            timerRightChickenRunning()
-        } else {timerLeftChickenRunning()
+            timerNormalModeChicken()
+        } else {timerInsaneModeChicken()
         }
     }
 
@@ -198,7 +224,7 @@ class GameViewController: UIViewController {
            let d: String = formattedDate.string(from: date)
            
            UserDefaults.standard.set(d, forKey: "TimePlay")
-           print("Время рекорда - \(UserDefaults.standard.string(forKey: "TimePlay"))")
+           print("Время рекорда - \(UserDefaults.standard.string(forKey: "TimePlay") ?? "1")")
 
                self.timer.invalidate()
                self.timerForAccelerometer.invalidate()
@@ -261,9 +287,6 @@ class GameViewController: UIViewController {
 
     @IBAction func leftButtonPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear) {
-            
-            
-            
             
             self.carImageGameView.center.x -= 20
             self.carImageGameView.transform = CGAffineTransform(rotationAngle: 25)
@@ -342,9 +365,9 @@ class GameViewController: UIViewController {
     
     
     
-    func timerRightChickenRunning() {
+    func timerNormalModeChicken() {
          
-        timerChickien = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+        timerNormalMode = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             let rightChicken = UIImageView()
             rightChicken.frame.size = CGSize(width: 70, height: 70)
             rightChicken.image = UIImage(named: "chicken.png")
@@ -367,20 +390,19 @@ class GameViewController: UIViewController {
             } completion: { _ in
                 
                 if rightChicken.frame.intersects(self.carImageGameView.frame) {
-                    self.timerChickien.invalidate()
-                    self.stopGame()
                     
-//                    self.gameStop = true
-//                    if self.gameStop == true {
-//                        self.timerChickien.invalidate()
-//                        self.stopGame()
-//                    }
-                    print("ВЫ СБИЛИ КУРИЦУ, СУДАРЬ!")
+                    if self.godeMode == false {
+                    self.timerNormalMode.invalidate()
+                    self.stopGame()
+                    } else if rightChicken.frame.intersects(self.carImageGameView.frame) {
+                        
+                        rightChicken.removeFromSuperview()
+                    }
+                    print("Вы сбили курицу в обычном режиме!")
                     print("------------------------")
                     
                 } else if rightChicken.frame.origin.y < self.grayView.frame.maxY {
                     rightChickenRunningSettings()
-                    //print(rightChicken.center.y)
                 }
                 if rightChicken.frame.origin.y > self.grayView.frame.maxY {
                     rightChicken.removeFromSuperview()
@@ -391,9 +413,9 @@ class GameViewController: UIViewController {
  }
 }
     
-    func timerLeftChickenRunning() {
+    func timerInsaneModeChicken() {
          
-        timerChickien2 =  Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+        timerInsaneMode =  Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             let leftChicken = UIImageView()
             leftChicken.frame.size = CGSize(width: 70, height: 70)
             leftChicken.image = UIImage(named: "chicken_crazy")
@@ -424,8 +446,20 @@ class GameViewController: UIViewController {
                 
                 if leftChicken.frame.intersects(self.carImageGameView.frame) {
                     
-                    self.timerChickien2.invalidate()
+                    if self.godeMode == false {
+                    self.timerInsaneMode.invalidate()
                     self.stopGame()
+                    //leftChicken.removeFromSuperview()
+                    } else if leftChicken.frame.intersects(self.carImageGameView.frame) {
+                        
+                        leftChicken.removeFromSuperview()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
                     
 //                    self.gameStop = true
 //
@@ -433,7 +467,7 @@ class GameViewController: UIViewController {
 //                        self.timerChickien2.invalidate()
 //                        self.stopGame()
 //                    }
-                    print("ВЫ СБИЛИ   КУРИЦУ, СУДАРЬ!")
+                    print("Вы сбили курицу в сложном режиме!")
                     print("------------------------")
                     
                 } else if leftChicken.frame.origin.y < self.grayView.frame.maxY {

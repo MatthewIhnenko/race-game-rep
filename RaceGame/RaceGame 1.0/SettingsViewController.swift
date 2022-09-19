@@ -9,53 +9,32 @@ import UIKit
 
 class SettingsViewController: UIViewController  {
 
-    
     @IBOutlet weak var swipeCarLabel: UILabel!
-    
     @IBOutlet weak var swipeDifficultyLabel: UILabel!
-    
-    
-    
+    @IBOutlet weak var controlsButtonsLabel: UILabel!
     
     // Сущность объекта должна реализовывать протокол Codable
     let decoder = JSONDecoder() // Позволяет превратить данные в объект
     let encoder = JSONEncoder() // Позволяет превратить объект в данные
     
-    
-    
     //Car
     @IBOutlet weak var sliderImageView1: UIImageView!
-    
     @IBOutlet weak var sliderImageView2: UIImageView!
-    
     @IBOutlet weak var carChoserView: UIView!
-    
     @IBOutlet weak var carTypeLabel: UILabel!
-    
-    
-    
-    
     
     //Chicken
     @IBOutlet weak var sliderChickenImageView1: UIImageView!
-    
     @IBOutlet weak var sliderChickenImageView2: UIImageView!
-    
     @IBOutlet weak var difficultyChoserView: UIView!
-    
     @IBOutlet weak var chickenTypeLabel: UILabel!
     
-    
+    // Ввод имени игрока.
     @IBOutlet weak var enterYourNameTextField: UITextField!
     
-    
+    // Отображение имени игрока.
     @IBOutlet weak var playerNameLabel: UILabel!
-    
-    
     var playerName: String?
-    
-    
-    
     
     // Управления картинками машин
     var currenCar = 0
@@ -69,7 +48,6 @@ class SettingsViewController: UIViewController  {
     var currentIndex: Int = 0
     var nextIndex: Int = -1
     
-    
     // Управления картинками chicken
     var currenChicken  = 0
     var rightChicken:Int = -1
@@ -81,14 +59,11 @@ class SettingsViewController: UIViewController  {
     var currentIndexChicken: Int = 0
     var nextIndexChicken: Int = -1
     
-    
-    
     var red = false
     var blue = false
     var pink = false
     var green = false
      
-    
     enum CarImages: String {
         case blueLagoon, pinkPanter, redFury, greenMan
         
@@ -108,9 +83,20 @@ class SettingsViewController: UIViewController  {
     }
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        sliderImageView1.frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (sliderImageView1.frame.width / 2), y: swipeCarLabel.frame.height + 1)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,11 +105,10 @@ class SettingsViewController: UIViewController  {
         carTypeLabel.font = UIFont.buttershine(with: 25)
         swipeDifficultyLabel.font = UIFont.buttershine(with: 30)
         chickenTypeLabel.font = UIFont.buttershine(with: 30)
+        controlsButtonsLabel.font = UIFont.buttershine(with: 30)
         
         print("CAR LABEL",swipeCarLabel.frame.height + 1)
         sliderImageView1.frame.origin = CGPoint(x: (carChoserView.frame.width / 2) - (sliderImageView1.frame.width / 2), y: swipeCarLabel.frame.height + 21)
-        
-        
         
         
         enterYourNameTextField.delegate = self
@@ -137,16 +122,7 @@ class SettingsViewController: UIViewController  {
         
         gestureChicken()
         gestureChicken2()
-        
-//        let carPink: UIImage = (UIImage(named: "car_pink")!)
-//        let carRed: UIImage = (UIImage(named: "car_new-removebg-preview")!)
-//        let carGreen: UIImage = (UIImage(named: "car_green")!)
-//        let carBlue: UIImage = (UIImage(named: "car_blue")!)
-        
-       //let carPink = CodableImage(image: (UIImage(named: "car_blue")!))
-        
-        
-        
+         
         carsImages.append(CarImages.pinkPanter.imageCar!)
         carsImages.append(CarImages.redFury.imageCar!)
         carsImages.append(CarImages.greenMan.imageCar!)
@@ -155,10 +131,8 @@ class SettingsViewController: UIViewController  {
         chickenImages.append(UIImage(named: "chicken")!)
         chickenImages.append(UIImage(named: "chicken_crazy")!)
         
-        
         // Включение функции свайпа
         setupSwipeGestureRecognizer()
-        
         setupSwipeGestureRecognizerChicken()
         
         
@@ -199,11 +173,9 @@ class SettingsViewController: UIViewController  {
           switch sender.direction {
           case .right:
               
-              
               if self.nextIndexChicken == -1 {
                   self.nextIndexChicken = self.sliderArrayChicken.count - 1
               }
-              
               
               if self.leftChicken == -1 {
                   self.sliderArrayChicken[self.nextIndexChicken].image = self.chickenImages[self.chickenImages.count - 1]
@@ -217,8 +189,6 @@ class SettingsViewController: UIViewController  {
               self.sliderArrayChicken[self.nextIndexChicken].frame.origin =  CGPoint(x: -480, y: swipeDifficultyLabel.frame.height + 1)
               
               print("Swipe right")
-              
-             
               
               UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) { [self] in
                   
@@ -289,8 +259,7 @@ class SettingsViewController: UIViewController  {
 
                   self.sliderArrayChicken[nextIndexChicken].frame.origin = CGPoint(x: (difficultyChoserView.frame.width / 2) - (self.sliderArrayChicken[nextIndexChicken].frame.width / 2), y: swipeDifficultyLabel.frame.height + 1)
                   
-                   
-                  
+
               } completion: { _ in
                   
                   //self.sliderArray[self.currentIndex].frame.origin =  CGPoint(x: 400, y: 150)
@@ -330,10 +299,10 @@ class SettingsViewController: UIViewController  {
               break
           }
 
-        print("Левый кот \(leftChicken)")
-        print("Правый кот \(rightChicken)")
-         print("Текущий кот \(currenChicken)")
-          print("------------")
+//        print("Левый кот \(leftChicken)")
+//        print("Правый кот \(rightChicken)")
+//         print("Текущий кот \(currenChicken)")
+//          print("------------")
           
           if currenChicken == 0 {
               chickenTypeLabel.text = "Insane"
@@ -476,8 +445,6 @@ class SettingsViewController: UIViewController  {
                 
             } completion: { _ in
                 
-                //self.sliderArray[self.currentIndex].frame.origin =  CGPoint(x: 400, y: 150)
-                
                 if self.currenCar + 1 >= self.carsImages.count {
                     self.currenCar = 0
                 } else {
@@ -513,10 +480,10 @@ class SettingsViewController: UIViewController  {
             break
         }
 
-        print("Левый кот \(leftCar)")
-        print("Правый кот \(rightCar)")
-        print("Текущий кот \(currenCar)")
-       print("------------")
+//        print("Левый кот \(leftCar)")
+//        print("Правый кот \(rightCar)")
+//        print("Текущий кот \(currenCar)")
+//       print("------------")
     
         
         func rightSwapCarSaving2() {
@@ -600,11 +567,6 @@ class SettingsViewController: UIViewController  {
             
         }
         
-        
-        
-        
-        
-        
         func rightSwapCarSaving() {
             
             if currenCar == 0 {
@@ -659,9 +621,7 @@ class SettingsViewController: UIViewController  {
                 }
                 
             }
-            
-            
-        
+
         func rightSwapCarRecognition() {
             
             print("Сейчас индекс массива слайдера - \(currentIndex)")
@@ -720,15 +680,8 @@ class SettingsViewController: UIViewController  {
     }
     
     @objc func chooseCarTap(sender: UITapGestureRecognizer) {
-        
         print("Тап в слайдер 1!")
-         
-        
-        
-         
-        
         //UserDefaults.standard.set(sliderImageView1.image, forKey: "carColor")
-    
     }
     
     
@@ -747,28 +700,18 @@ class SettingsViewController: UIViewController  {
             
     }
     
-    
-    
     // CHICKEN
     func gestureChicken() {
      let tapGesture = UITapGestureRecognizer()
          tapGesture.numberOfTapsRequired = 2
      tapGesture.addTarget(self, action: #selector(chooseChickenTap))
         sliderChickenImageView1.addGestureRecognizer(tapGesture)
-        
     }
     
     @objc func chooseChickenTap(sender: UITapGestureRecognizer) -> Bool {
-        
         print("Тап в слайдер 1!")
         UserDefaults.standard.set(true, forKey: "GameMode")
         return true
-       
-         
-         
-        
-        //UserDefaults.standard.set(sliderImageView1.image, forKey: "carColor")
-    
     }
     
     
@@ -783,31 +726,11 @@ class SettingsViewController: UIViewController  {
     @objc func chooseChickenTap2(sender: UITapGestureRecognizer) -> Bool {
         
         print("Тап в слайдер 2!")
-         
         UserDefaults.standard.set(false, forKey: "GameMode")
         return false
-         
-            
+    
     }
     
-    @IBAction func enterYourNameActionFirstTap(_ sender: UITextField) {
-         enterYourNameTextFieldUp()
-        
-    }
-    
-    
-    
-    
-    
-//    @IBAction func enterYourNameActionEnd(_ sender: UITextField) {
-//
-//
-//        print(enterYourNameTextField.text)
-//
-//        //playerName = UserDefaults.standard.string(forKey: "PlayerName")
-//
-//
-//    }
     
     @IBAction func sliderAction(_ sender: UISlider) {
         player?.setVolume(sender.value, fadeDuration: 0.1)
@@ -816,45 +739,45 @@ class SettingsViewController: UIViewController  {
     
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        
-        //let startViewController = StartViewController.instantiate()
-        
-        
         dismiss(animated: true)
-        
-        
     }
     
     
-    
+    // Старое
     @IBAction func sumbitNameButtonPressed(_ sender: UIButton) {
-        
-        //playerName = "\(UserDefaults.standard.string(forKey: "PlayerName") ?? "Player_1")"
-        //print(playerName ?? "Mistake")
-        //UserDefaults.standard.set(, forKey: <#T##String#>)
     }
-    
-    
-    func enterYourNameTextFieldUp() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) {
-            self.enterYourNameTextField.frame.origin = CGPoint(x: 20, y: 480)
-        } completion: { Bool in
-        }
+    @IBAction func enterYourNameActionFirstTap(_ sender: UITextField) {
+        //enterYourNameTextFieldUp()
+    }
 
-        
+
+    // Управление перемещением текстфилда.
+    @objc func keyboardWillHide() {
+        self.view.frame.origin.y = 0
     }
-    func enterYourNameTextFieldDown() {
-        
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) {
-            self.enterYourNameTextField.frame.origin = CGPoint(x: 20, y: 609)
-        } completion: { Bool in
+
+    @objc func keyboardWillChange(notification: NSNotification) {
+
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if enterYourNameTextField.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height
+            }
         }
-        
     }
     
     
     
+    @IBAction func keyboardControlsButtonPressed(_ sender: UIButton) {
+        UserDefaults.standard.set(true, forKey: "ControlsKeybord")
+        UserDefaults.standard.set(false, forKey: "ControlsAccelerometer")
+    }
     
+    @IBAction func accelerometerControlsButtonPressed(_ sender: UIButton) {
+        UserDefaults.standard.set(true, forKey: "ControlsAccelerometer")
+        UserDefaults.standard.set(false, forKey: "ControlsKeybord")
+    }
+    
+
 }
 
 
@@ -870,7 +793,7 @@ extension SettingsViewController: UITextFieldDelegate {
         playerNameLabel.text = playerName ?? "UnknownPlayer"
         print (playerName)
         
-        enterYourNameTextFieldDown()
+       // enterYourNameTextFieldDown()
         enterYourNameTextField.text = nil
         enterYourNameTextField.endEditing(true)
          

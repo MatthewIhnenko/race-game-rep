@@ -30,8 +30,6 @@
 		844CC29D2809B7C4002161FF /* ResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CC29C2809B7C4002161FF /* ResultsViewController.storyboard */; };
 		844CC29F2809BA77002161FF /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CC29E2809BA77002161FF /* Instantiation.swift */; };
 		84546C4B285E1EBA00608B22 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84546C4A285E1EBA00608B22 /* ResultsTableViewCell.swift */; };
-		8472E0CC28CE6CA200916EBB /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8472E0CB28CE6CA200916EBB /* FacebookShare */; };
-		8472E0CF28CE71E900916EBB /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8472E0CE28CE71E900916EBB /* FacebookCore */; };
 		84944D4A283697CF00710EBE /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84944D49283697CF00710EBE /* Alerts.swift */; };
 		849A8EA528C7B99600116335 /* LP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849A8EA328C7B99600116335 /* LP.mp3 */; };
 		849A8EA628C7B99600116335 /* Nirvana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849A8EA428C7B99600116335 /* Nirvana.mp3 */; };
@@ -110,8 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8472E0CC28CE6CA200916EBB /* FacebookShare in Frameworks */,
-				8472E0CF28CE71E900916EBB /* FacebookCore in Frameworks */,
 				6B0379CE93AE654D34C75322 /* Pods_RaceGame_1_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,8 +270,6 @@
 			);
 			name = "RaceGame 1.0";
 			packageProductDependencies = (
-				8472E0CB28CE6CA200916EBB /* FacebookShare */,
-				8472E0CE28CE71E900916EBB /* FacebookCore */,
 			);
 			productName = "RaceGame 1.0";
 			productReference = 844CC25F2809B4D1002161FF /* RaceGame 1.0.app */;
@@ -352,8 +346,6 @@
 			);
 			mainGroup = 844CC2562809B4D1002161FF;
 			packageReferences = (
-				8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				8472E0CD28CE71E900916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 844CC2602809B4D1002161FF /* Products */;
 			projectDirPath = "";
@@ -614,7 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -669,7 +661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -690,10 +682,12 @@
 				DEVELOPMENT_TEAM = NNDA9Z2LDR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RaceGame 1.0/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ChickenGeddon;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,10 +712,12 @@
 				DEVELOPMENT_TEAM = NNDA9Z2LDR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RaceGame 1.0/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ChickenGeddon;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -855,38 +851,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		8472E0CD28CE71E900916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8472E0CB28CE6CA200916EBB /* FacebookShare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookShare;
-		};
-		8472E0CE28CE71E900916EBB /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8472E0CA28CE6CA200916EBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 844CC2572809B4D1002161FF /* Project object */;
 }

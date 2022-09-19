@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import FacebookShare
-import FacebookCore
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,11 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        FBSDKShareKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-    
-        
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             guard error == nil, granted else {
